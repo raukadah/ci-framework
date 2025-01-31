@@ -147,7 +147,7 @@
       block:
         - name: Clone the downstream project
           ansible.builtin.git:
-            repo: '{{ _change.host }}/gerrit/{{ _change.project }}'
+            repo: '{{ ansible_user_dir }}/src/{{ _change.host | split("://") | last }}/{{ _change.project }}'
             dest: '{{ cifmw_bop_build_repo_dir }}/DLRN/data/{{ project_name_mapped.stdout }}-tested'
             refspec: "{{ _change.refspec }}"
             version: 'FETCH_HEAD'
